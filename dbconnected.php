@@ -1,7 +1,7 @@
 <?php
 
     $server="localhost";
-    $dbname="jstore";
+    $dbname="jStore";
 
     $user="root";
     $password="";
