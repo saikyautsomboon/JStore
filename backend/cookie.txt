@@ -1,0 +1,34 @@
+Cookie
+----------------------------------------------------------------
+    - broswer မှာ cookie cache တွဲသိမ်း
+    - data တွေကို cookie မှာတိုက်ရိုက်သိမ်း
+    - ရိုးရိုး txt အနေနဲ့ပါ သိမ်းလို့ရ
+    - broswer - refresh လုပ်တာနဲ့ ပျက်မယ် 
+
+cookie စဆောက် -> setcookie('cookie_name', 'cookie_data','time_duration);
+                    setcookie('reguccess','Register Success', 'time()+3000');
+
+cookie ပြန်ခေါ်သုံး -> $_COOKIE_['cookie_name'];
+                    echo $_COOKIE['regsuccess'];
+
+cookie ပြန်ဖျက် -> setcookie('cookie_name','','time_duration');
+                    setcookie('regsuccess','','time()-3000');
+
+------------------------------------------------------------------------------------------------
+SESSON
+--------------
+    - data တွေကို cookie နဲ့အတူ server မှာတိုက်ရိုက်သိမ်း   
+    - ရိုးရိုး text အပြင် array / code သိမ်းလို့ရ
+    - broswer clear လုပ်မှ ပျက်မယ်
+    - page တိုင်းသယ်သွားလို့ရ
+    - အချိတ်သတ်မှတ်လို့မရပါဘူး
+
+Session စဆောက် ----> session_start();
+                    $_SESSION['sesson_name']='session_data';
+
+Session ပြန်ခေါ်သုံး --------> session_start();
+                            echo $_SESSION['session_name'];
+
+Sessoion ပြန်ဖျက် ----------> session_start();
+                            unset($_SESSION['session_name']));
+                            sessioin_destory();

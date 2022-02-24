@@ -1,0 +1,53 @@
+Home Apperance
+
+
+1.Item001 Pillow 3000
+2.Item002 Blanket 10000
+
+----------------------------------------------------------------
+
+Stationary Info
+
+
+1.Item001 Pen 100
+2.Item002 Pencil 150
+
+
+1.Item003 A4 Paper 12000
+2.Item002 Unicolor Book 200
+
+------------------------------------------------------------------
+
+Cosmetic
+
+1. Item001 Sai Sai LipStick One 12000
+2. Item002 Sai Sai LipStick Two 12000
+3. Item003 Ni Ni Khin Zaw Red LipStick One 12000
+4. Item004 Ni Ni Khin Zaw Red lipStick Two 12000
+
+
+1. Item003 Sai Sai Facemask 12000
+2. Item004 Sai Sai MakeUp 12000
+
+================================================================
+
+categories:
+- id,name (Home Apperance, Stationary Info, Cosmetic)
+
+
+subcategory:
+- id,name, category_id (lipStick,facemask,MakeUp => cosmetic ေအာက်မှာ )
+
+brands:
+- id,name (Sai Sai, Ni Ni Khin Zaw)
+
+items:
+- id ,codeno, name, price, photo,brands(ဘယ် brand အမျိုးအစားလဲ), subcategory (ဘယ်ပစ္စည်းအမျိုးအစားလဲ)
+
+Category
+- Electronic Devices, Woman Fashion , Man Fashion , Beauty, Toys, Pets, Sports ,Health ,Smart Home, Furniture,Book,Travel,
+
+
+Ajax
+-------------------------------
+js ကနေ php ကို လမ်းပို့တဲ့ချိန်ပို့တာ
