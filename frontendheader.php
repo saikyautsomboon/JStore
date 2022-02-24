@@ -9,12 +9,6 @@ $categories = $stmt->fetchAll();
 
 
 ?>
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 

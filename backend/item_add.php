@@ -36,7 +36,7 @@ $stmt->execute();
 
 $itemsid = $conn->lastInsertId();
 
-
+// upload for multiple image items 
 for ($i = 0; $i < $secphoto; $i++) {
 
 

@@ -60,8 +60,8 @@ $brands = $stmt->fetchALL();
                                                         <div class="product-image">
                                                             <div class="image">
                                                                 <a href="subbrands.php?id=<?= $id?>">
-                                                                    <div class="container" style="width: 0.5%">
-                                                                        <img src="backend/<?= $logo ?>" alt="" class="img-fluid">
+                                                                    <div class="container">
+                                                                        <img src="backend/<?= $logo ?>" alt="" class="img-fluid" width="50"> 
                                                                     </div>
 
                                                                 </a>

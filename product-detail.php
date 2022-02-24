@@ -5,18 +5,28 @@ require "frontendheader.php";
 $itemid = $_GET['id'];
 
 
-$sql = "SELECT * FROM items WHERE id=:id";
+$sql = "SELECT items.*,brands.id as bid ,brands.name as bname 
+FROM items 
+LEFT JOIN brands 
+ON items.brand_id=brands.id 
+WHERE items.id=:id";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':id', $itemid);
 $stmt->execute();
-
 $itemshow = $stmt->fetch(PDO::FETCH_ASSOC);
 
 $sql = "SELECT * FROM items";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
-
 $items = $stmt->fetchAll();
+
+$sql = "SELECT * FROM `item_detail` WHERE item_id=:id";
+
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':id', $itemid);
+$stmt->execute();
+$itemdetails = $stmt->fetchAll();
+
 ?>
 <div class="breadcrumb">
     <div class="container">
@@ -226,68 +236,21 @@ $items = $stmt->fetchAll();
                             <div class="product-item-holder size-big single-product-gallery small-gallery">
 
                                 <div id="owl-single-product">
-                                    <div class="single-product-gallery-item" id="slide1">
-                                        <a data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p1.jpg">
-                                            <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p1.jpg" />
-                                        </a>
-                                    </div>
-                                    <!-- /.single-product-gallery-item -->
+                                    <?php
+                                    $i = 1;
+                                    foreach ($itemdetails as $itemdetail) {
+                                        $id = $itemdetail['id'];
+                                        $photo = $itemdetail['photo'];
 
-                                    <!-- <div class="single-product-gallery-item" id="slide2">
-                                        <a data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p2.jpg">
-                                            <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p2.jpg" />
-                                        </a>
-                                    </div> -->
-                                    <!-- /.single-product-gallery-item -->
 
-                                    <!-- <div class="single-product-gallery-item" id="slide3">
-                                        <a data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p3.jpg">
-                                            <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p3.jpg" />
-                                        </a>
-                                    </div> -->
-                                    <!-- /.single-product-gallery-item -->
 
-                                    <!-- <div class="single-product-gallery-item" id="slide4">
-                                        <a data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p4.jpg">
-                                            <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p4.jpg" />
-                                        </a>
-                                    </div> -->
-                                    <!-- /.single-product-gallery-item -->
-
-                                    <!-- <div class="single-product-gallery-item" id="slide5">
-                                        <a data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p5.jpg">
-                                            <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p5.jpg" />
-                                        </a>
-                                    </div> -->
-                                    <!-- /.single-product-gallery-item -->
-
-                                    <!-- <div class="single-product-gallery-item" id="slide6">
-                                        <a data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p6.jpg">
-                                            <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p6.jpg" />
-                                        </a>
-                                    </div> -->
-                                    <!-- /.single-product-gallery-item -->
-
-                                    <!-- <div class="single-product-gallery-item" id="slide7">
-                                        <a data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p7.jpg">
-                                            <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p7.jpg" />
-                                        </a>
-                                    </div> -->
-                                    <!-- /.single-product-gallery-item -->
-
-                                    <!-- <div class="single-product-gallery-item" id="slide8">
-                                        <a data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p8.jpg">
-                                            <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p8.jpg" />
-                                        </a>
-                                    </div> -->
-                                    <!-- /.single-product-gallery-item -->
-
-                                    <!-- <div class="single-product-gallery-item" id="slide9">
-                                        <a data-lightbox="image-1" data-title="Gallery" href="assets/images/products/p9.jpg">
-                                            <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p9.jpg" />
-                                        </a>
-                                    </div> -->
-                                    <!-- /.single-product-gallery-item -->
+                                    ?>
+                                        <div class="single-product-gallery-item" id="slide<?= $i++?>">
+                                            <a data-lightbox="image-1" data-title="Gallery" href="<?= 'backend/' . $photo ?>">
+                                                <img class="img-responsive" alt="" src="<?= 'backend/' . $photo ?>" data-echo="<?= 'backend/' . $photo ?>" />
+                                            </a>
+                                        </div>
+                                    <?php } ?>
 
                                 </div>
                                 <!-- /.single-product-slider -->
@@ -296,59 +259,19 @@ $items = $stmt->fetchAll();
                                 <div class="single-product-gallery-thumbs gallery-thumbs">
 
                                     <div id="owl-single-product-thumbnails">
-                                        <div class="item">
-                                            <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="1" href="#slide1">
-                                                <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p1.jpg" />
-                                            </a>
-                                        </div>
+                                        <?php
+                                        $i = 1;
+                                        foreach ($itemdetails as $itemdetail) {
+                                            $id = $itemdetail['id'];
+                                            $photo = $itemdetail['photo'];
 
-                                        <div class="item">
-                                            <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="2" href="#slide2">
-                                                <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p2.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="item">
-
-                                            <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="3" href="#slide3">
-                                                <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p3.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="item">
-
-                                            <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="4" href="#slide4">
-                                                <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p4.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="item">
-
-                                            <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="5" href="#slide5">
-                                                <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p5.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="item">
-
-                                            <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="6" href="#slide6">
-                                                <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p6.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="item">
-
-                                            <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="7" href="#slide7">
-                                                <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p7.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="item">
-
-                                            <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="8" href="#slide8">
-                                                <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p8.jpg" />
-                                            </a>
-                                        </div>
-                                        <div class="item">
-
-                                            <a class="horizontal-thumb" data-target="#owl-single-product" data-slide="9" href="#slide9">
-                                                <img class="img-responsive" alt="" src="assets/images/blank.gif" data-echo="assets/images/products/p9.jpg" />
-                                            </a>
-                                        </div>
+                                        ?>
+                                            <div class="item">
+                                                <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="1" href="#slide<?= $i++?>">
+                                                    <img class="img-responsive" alt="" src="<?= 'backend/' . $photo ?>" data-echo="<?= 'backend/' . $photo ?>" />
+                                                </a>
+                                            </div>
+                                        <?php } ?>
                                     </div>
                                     <!-- /#owl-single-product-thumbnails -->
 
@@ -383,9 +306,12 @@ $items = $stmt->fetchAll();
                                     <!-- /.row -->
                                 </div>
                                 <!-- /.stock-container -->
+                                <div class="description-container m-t-20">
+                                    <p>Brand : <?= $itemshow['bname'] ?> </p>
+                                </div>
 
                                 <div class="description-container m-t-20">
-                                    <p><?= $itemshow['description'] ?> </p>
+                                    <p>Description : <?= $itemshow['description'] ?> </p>
                                 </div>
                                 <!-- /.description-container -->
 
@@ -400,10 +326,10 @@ $items = $stmt->fetchAll();
                                                 if ($itemshow['discount']) {
 
                                                 ?>
-                                                    <span class="price"><?= $total; ?></span>
-                                                    <span class="price-strike"><?= $itemshow['price'] ?></span>
+                                                    <span class="price">Prices : <?= $total; ?></span>
+                                                    <span class="price-strike">Discount : <?= $itemshow['discount']; ?></span>
                                                 <?php } else { ?>
-                                                    <span class="price"><?= $total; ?></span>
+                                                    <span class="price">Prices : <?= $total; ?></span>
                                                 <?php } ?>
                                             </div>
                                         </div>
