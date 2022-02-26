@@ -16,7 +16,7 @@ if(isset($_SESSION['login_user'])){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jstore Shop Backend</title>
+    <title>JSTORE Shop Backend</title>
     <link rel="icon" href="../assets/images/weblogo.png">
 
     <!-- Google Font: Source Sans Pro -->

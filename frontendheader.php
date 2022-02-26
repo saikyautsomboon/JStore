@@ -20,7 +20,7 @@ $categories = $stmt->fetchAll();
     <meta name="author" content="">
     <meta name="keywords" content="jstore, shopping, eCommerce ">
     <meta name="robots" content="all">
-    <title>Jstore Shopp</title>
+    <title>JSTORE Shop</title>
     <link rel="icon" href="assets/images/weblogo.png">
 
     <!-- Bootstrap Core CSS -->
