@@ -9,6 +9,7 @@ $confirm = trim($_POST['cconfirmpassword']);
 $address = trim($_POST['caddress']);
 $photo = trim($_FILES['userphoto']);
 
+
 $status = 0;
 $role = 2;
 

@@ -61,7 +61,7 @@
                                     <input type="password" class="form-control unicase-form-control text-input" id="password" placeholder="Enter your password" name="lpassword">
                                 </div>
 
-                                <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Login</button>
+                                <button type="submit" class="btn-upper btn btn-primary">Login</button>
                             </form>
                         </div>
                         <!-- Sign-in -->
@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="info-title" for="confirmpassword">Confirm Password <span>*</span></label>
-                                    <input type="text" class="form-control unicase-form-control text-input" id="confirmpassword" name="confirmpassword">
+                                    <input type="text" class="form-control unicase-form-control text-input" id="confirmpassword" name="cconfirmpassword">
                                 </div>
                                 <div class="form-group">
                                     <label class="info-title" for="address">Address <span>*</span></label>

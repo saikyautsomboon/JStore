@@ -1,0 +1,9 @@
+CPanel 
+--------------
+subdomain -JSTORE
+database - cp919414_JStore
+username - cp919414_jstore
+Password - jstore12345
+
+
+
