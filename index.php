@@ -7,7 +7,7 @@ $items = $stmt->fetchAll();
 <?php require 'frontendheader.php' ?>
 
 <div class="body-content outer-top-vs" id="top-banner-and-menu">
-    <div class="container">
+    <div class="container" id="showitme">
         <div class="row">
             <!-- ============================================== SIDEBAR ============================================== -->
             <div class="col-xs-12 col-sm-12 col-md-3 sidebar">
@@ -801,7 +801,7 @@ $items = $stmt->fetchAll();
                 <!-- ============================================== Discount PRODUCTS : END ============================================== -->
             </div>
             <!-- ============================================== Show all Items ========================================================= -->
-            <div class="clearfix filters-container m-t-10">
+                <div class="clearfix filters-container m-t-10">
                     <div class="row">
                         <div class="col col-sm-6 col-md-3 col-lg-3 col-xs-6">
                             <div class="filter-tabs">
@@ -1023,7 +1023,6 @@ $items = $stmt->fetchAll();
     <!-- /.logo-slider -->
     <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
 </div>
-<!-- /.container -->
-</div>
+
 <!-- /#top-banner-and-menu -->
 <?php require 'frontendfooter.php' ?>

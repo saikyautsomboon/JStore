@@ -18,9 +18,10 @@ $categories = $stmt->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="keywords" content="MediaCenter, Template, eCommerce">
+    <meta name="keywords" content="jstore, shopping, eCommerce ">
     <meta name="robots" content="all">
-    <title>JStore & Shopping</title>
+    <title>Jstore Shopp</title>
+    <link rel="icon" href="assets/images/weblogo.png">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -46,6 +47,7 @@ $categories = $stmt->fetchAll();
 
     <script src='bootstrap/js/jquery.min.js'></script>
     <script src='shoppingcart.js'></script>
+    <script src='searchitem.js'></script>
 </head>
 
 <body class="cnt-home">
@@ -60,18 +62,18 @@ $categories = $stmt->fetchAll();
                         <ul class="list-unstyled">
                             <li class="myaccount"><a href="#"><span>My Account</span></a></li>
                             <li class="header_cart hidden-xs"><a href="orderhistory.php"><span>Order History</span></a></li>
-                            <?php 
-                                if (isset($_SESSION['login_user'])) {
+                            <?php
+                            if (isset($_SESSION['login_user'])) {
                             ?>
-                            <li class="login"><a href=""><span>
-                                <?= $_SESSION['login_user']['name']?>
-                            </span></a></li>
-                            <li class="logout"><a href="backend/logout.php"><span>Log Out</span></a></li>
+                                <li class="login"><a href=""><span>
+                                            <?= $_SESSION['login_user']['name'] ?>
+                                        </span></a></li>
+                                <li class="logout"><a href="backend/logout.php"><span>Log Out</span></a></li>
 
                             <?php } else { ?>
                                 <li class="login"><a href="sign-in.php"><span>Login</span></a></li>
 
-                            <?php }?>
+                            <?php } ?>
                         </ul>
                     </div>
                     <!-- /.cnt-account -->
@@ -89,7 +91,7 @@ $categories = $stmt->fetchAll();
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
                         <!-- ============================================================= LOGO ============================================================= -->
-                        <div class="logo"> <a href="home.html"> <img src="assets/images/logo.png" alt="logo"> </a> </div>
+                        <div class="logo"> <a href="index.php"> <img src="assets/images/logo2.png" alt="logo"> </a> </div>
                         <!-- /.logo -->
                         <!-- ============================================================= LOGO : END ============================================================= -->
                     </div>
@@ -102,22 +104,21 @@ $categories = $stmt->fetchAll();
                             <form>
                                 <div class="control-group">
                                     <ul class="categories-filter animate-dropdown">
-                                        <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="category.html">Categories <b class="caret"></b></a>
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="category.html">Categories <b class="caret"></b></a>
                                             <ul class="dropdown-menu" role="menu">
-
                                                 <?php foreach ($categories as $category) {
                                                     $cid = $category['id'];
                                                     $cname = $category['name'];
 
                                                 ?>
-
-                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html"><?= $cname; ?></a></li>
+                                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="category.php?id=<?= $cid; ?>"><?= $cname; ?></a></li>
                                                 <?php } ?>
                                             </ul>
                                         </li>
                                     </ul>
-                                    <input class="search-field" placeholder="Search here..." />
-                                    <a class="search-button" href="#"></a>
+                                    <input class="search-field" placeholder="Search here..." id="itemsearch" name='search' />
+                                    <a class="search-button searchitems" type="submit"></a>
                                 </div>
                             </form>
                         </div>
@@ -177,7 +178,9 @@ $categories = $stmt->fetchAll();
                                                 <div class="yamm-content ">
                                                     <div class="row">
                                                         <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
-                                                            <a href="brands.php"><h2 class="title">Brands</h2></a>  
+                                                            <a href="brands.php">
+                                                                <h2 class="title">Brands</h2>
+                                                            </a>
                                                             <ul class="links">
                                                                 <?php
 
@@ -190,7 +193,7 @@ $categories = $stmt->fetchAll();
                                                                     $id = $brand['id'];
                                                                     $bname = $brand['name'];
                                                                 ?>
-                                                                    <li><a href="subbrands.php?id=<?= $id?>"><?= $bname; ?></a></li>
+                                                                    <li><a href="subbrands.php?id=<?= $id ?>"><?= $bname; ?></a></li>
                                                                 <?php } ?>
                                                             </ul>
                                                         </div>
@@ -209,7 +212,7 @@ $categories = $stmt->fetchAll();
                                                                     $id = $brand['id'];
                                                                     $bname = $brand['name'];
                                                                 ?>
-                                                                    <li><a href="subbrands.php?id=<?= $id?>"><?= $bname; ?></a></li>
+                                                                    <li><a href="subbrands.php?id=<?= $id ?>"><?= $bname; ?></a></li>
                                                                 <?php } ?>
 
                                                             </ul>
@@ -304,7 +307,7 @@ $categories = $stmt->fetchAll();
                                     <li class="dropdown"> <a href="contact.html">Jewellery</a> </li>
                                     <li class="dropdown"> <a href="contact.html">Shoes</a> </li>
                                     <li class="dropdown"> <a href="contact.html">Kids & Girls</a> </li>
-                            
+
                                 </ul>
                                 <!-- /.navbar-nav -->
                                 <div class="clearfix"></div>

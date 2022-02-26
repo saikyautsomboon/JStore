@@ -1,4 +1,5 @@
-<?php require "dbconnected.php";
+<?php 
+require "dbconnected.php";
 $sql = "SELECT * FROM categories ORDER BY id";
 $stmt = $conn->prepare($sql);
 
@@ -13,12 +14,10 @@ $brands = $stmt->fetchAll();
 
 ?>
 
-
-
-
-
+<!-- This is for Side bar Categories not design  -->
 
 <!-- ================================== TOP NAVIGATION ================================== -->
+
 <div class="side-menu animate-dropdown outer-bottom-xs ">
     <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>
 

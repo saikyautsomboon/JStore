@@ -8,6 +8,7 @@ $stmt = $conn->prepare($sql);
 $stmt->execute();
 $brands = $stmt->fetchALL();
 ?>
+
 <div class="breadcrumb">
     <div class="container">
         <div class="breadcrumb-inner">
@@ -59,9 +60,9 @@ $brands = $stmt->fetchALL();
                                                     <div class="product">
                                                         <div class="product-image">
                                                             <div class="image">
-                                                                <a href="subbrands.php?id=<?= $id?>">
+                                                                <a href="subbrands.php?id=<?= $id ?>">
                                                                     <div class="container">
-                                                                        <img src="backend/<?= $logo ?>" alt="" class="img-fluid" width="50"> 
+                                                                        <img src="backend/<?= $logo ?>" alt="" class="img-fluid" width="50">
                                                                     </div>
 
                                                                 </a>
@@ -71,7 +72,7 @@ $brands = $stmt->fetchALL();
                                                         <!-- /.product-image -->
 
                                                         <div class="product-info text-left">
-                                                            <h3 class="name"><a href="subbrands.php?id=<?= $id?>"><?= $name ?></a></h3>
+                                                            <h3 class="name"><a href="subbrands.php?id=<?= $id ?>"><?= $name ?></a></h3>
                                                             <div class="rating rateit-small"></div>
                                                             <div class="description"></div>
 
@@ -148,4 +149,6 @@ $brands = $stmt->fetchALL();
     <!-- /.container -->
 
 </div>
+
+
 <?php require 'frontendfooter.php' ?>
