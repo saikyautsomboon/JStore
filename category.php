@@ -22,7 +22,7 @@ $stmt->execute();
 $items = $stmt->fetchAll();
 ?>
 <div class="body-content outer-top-vs" id="top-banner-and-menu">
-    <div class="container">
+    <div class="container" id="showitme">
         <div class="row">
             <!-- ============================================== Show all Items ========================================================= -->
                 <div class="clearfix filters-container m-t-10">
