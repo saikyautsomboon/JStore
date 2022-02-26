@@ -1,14 +1,14 @@
 <?php
+
 require 'dbconnected.php';
 session_start();
 $name = trim($_POST['cname']);
 $email = trim($_POST['cemail']);
 $phone = trim($_POST['cphone']);
 $password = trim($_POST['cpassword']);
-$confirm = trim($_POST['cconfirmpassword']);
+$confirm = trim($_POST['confirmpassword']);
 $address = trim($_POST['caddress']);
-$photo = trim($_FILES['userphoto']);
-
+$photo = $_FILES['userphoto'];
 
 $status = 0;
 $role = 2;

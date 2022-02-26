@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="info-title" for="confirmpassword">Confirm Password <span>*</span></label>
-                                    <input type="text" class="form-control unicase-form-control text-input" id="confirmpassword" name="cconfirmpassword">
+                                    <input type="text" class="form-control unicase-form-control text-input" id="confirmpassword" name="confirmpassword">
                                 </div>
                                 <div class="form-group">
                                     <label class="info-title" for="address">Address <span>*</span></label>
