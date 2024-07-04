@@ -38,6 +38,7 @@ if ($password != $confirm) {
 
   $stmt->execute();
 
+  // use last User ID
   $userid = $conn->lastInsertId();
 
   $sql = "INSERT INTO model_has_roles(user_id, role_id) 
