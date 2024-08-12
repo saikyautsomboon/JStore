@@ -1,5 +1,7 @@
 <?php
 session_start();
+require "../dbconnected.php";
+
 if(!isset($_SESSION['login_user'])){
     header ('location: ../sign-in.php');
 }
