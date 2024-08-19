@@ -59,7 +59,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="name_id" class="col-sm-2 col-form-label">Name</label>
-                                <div class="col-sm-10"><input type="text" class="form-control" placeholder="" id="name_id" name="name" value=<?= $item['name']?>></div>
+                                <div class="col-sm-10"><input type="text" class="form-control" placeholder="" id="name_id" name="name" value=" <?= $item['name']?>"></div>
 
                             </div>
                             <div class="form-group row">
