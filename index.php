@@ -10,7 +10,7 @@ FROM item_order
 RIGHT JOIN items
 on item_order.item_id=items.id
 GROUP BY item_id
-ORDER BY total_qty DESC";
+ORDER BY total_qty";
 
 $stmt =$conn->prepare($sqlhot);
 $stmt -> execute();
