@@ -10,7 +10,7 @@ FROM item_order
 RIGHT JOIN items
 on item_order.item_id=items.id
 GROUP BY item_id
-ORDER BY total_qty";
+ORDER BY total_qty Desc";
 
 $stmt =$conn->prepare($sqlhot);
 $stmt -> execute();
@@ -701,7 +701,13 @@ $itemshot = $stmt->fetchAll();
                                         </div>
 
                                         <div id="totalsold">
+                                            <?php 
+                                                if($totalqtysold > 0){
+                                            ?>
                                             <p>Sold: <?= $totalqtysold ?> qty</p>
+                                            <?php } else{?>
+                                            <p>Sold: 0 qty</p>
+                                            <?php } ?>
 
                                         </div>
                                         <!-- /.product-price -->
