@@ -3,6 +3,20 @@ $sql = "SELECT * FROM items ORDER BY rand()";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $items = $stmt->fetchAll();
+
+
+$sqlhot = "SELECT item_order.*,SUM(qty) as total_qty ,items.id as itemid,items.codeno as itemscode , items.name as itemsname , items.photo as itemphoto , items.price as itemsprice,items.discount as itemsdes
+FROM item_order
+RIGHT JOIN items
+on item_order.item_id=items.id
+GROUP BY item_id
+ORDER BY total_qty DESC";
+
+$stmt =$conn->prepare($sqlhot);
+$stmt -> execute();
+$itemshot = $stmt->fetchAll();
+
+
 ?>
 <?php require 'frontendheader.php' ?>
 
@@ -629,6 +643,104 @@ $items = $stmt->fetchAll();
 
                 <!-- /.sidebar-widget -->
                 <!-- ============================================== BEST SELLER : END ============================================== -->
+                <!-- ============================================== Hot Sell PRODUCTS ============================================== -->
+                <section class="section new-arriavls">
+                    <h3 class="section-title">Hot Seller Products</h3>
+                    <div class="carousel slide" data-ride="carousel"></div>
+                    <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
+
+                        <?php
+
+                        foreach ($itemshot as $hotitem) {
+
+                            $id = $hotitem['itemid'];
+                            $name = $hotitem['itemsname'];
+                            $price = $hotitem['itemsprice'];
+                            $discount = $hotitem['itemsdes'];
+                            $photo = $hotitem['itemphoto'];
+                            $code = $hotitem['itemscode'];
+                            $totalqtysold = $hotitem['total_qty'];
+                        ?>
+                        <div class="item item-carousel">
+                            <div class="products">
+                                <div class="product">
+                                    <div class="product-image">
+                                        <div class="image">
+                                            <a href="product-detail.php?id=<?= $id ?>">
+                                                <img src="<?= 'backend/' . $photo; ?>" class="img-fluid" alt="">
+                                            </a>
+
+                                        </div>
+                                        <!-- /.image -->
+
+                                        <div class="tag new"><span>new</span></div>
+                                    </div>
+                                    <!-- /.product-image -->
+
+                                    <div class="product-info text-left">
+                                        <h3 class="name">
+                                            <a href="product-detail.php?id=<?= $id ?>"><?= $name; ?></a>
+                                        </h3>
+                                        <div class="rating rateit-small"></div>
+                                        <div class="description"></div>
+                                        <div class="product-price">
+
+                                            <?php
+                                                if ($discount) {
+                                                ?>
+                                            <span class="price">
+                                                <?= $price; ?> ks</span>
+                                            <span class="price-before-discount">
+                                                <?= $discount; ?> ks
+                                            </span>
+                                            <?php } else { ?>
+                                            <span class="price">
+                                                <?= $price; ?> ks</span>
+                                            <?php } ?>
+
+                                        </div>
+
+                                        <div id="totalsold">
+                                            <p>Sold: <?= $totalqtysold ?> qty</p>
+
+                                        </div>
+                                        <!-- /.product-price -->
+
+                                    </div>
+                                    <!-- /.product-info -->
+                                    <div class="cart clearfix animate-effect">
+                                        <div class="action">
+                                            <ul class="list-unstyled">
+                                                <li class="add-cart-button btn-group">
+                                                    <button class="btn btn-primary icon addtocart"
+                                                        data-toggle="dropdown" type="button" title='Add to Cart'
+                                                        data-id='<?= $id; ?>' data-name='<?= $name; ?>'
+                                                        data-price='<?= $price ?>' data-discount='<?= $discount ?>'
+                                                        data-photo='<?= $photo ?>'>
+                                                        <i class="fa fa-shopping-cart"></i> </button>
+                                                    <button class="btn btn-primary cart-btn" type="button">Add to
+                                                        cart</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- /.action -->
+                                    </div>
+                                    <!-- /.cart -->
+                                </div>
+                                <!-- /.product -->
+
+                            </div>
+                            <!-- /.products -->
+                        </div>
+                        <!-- /.item -->
+                        <?php } ?>
+
+
+                    </div>
+                    <!-- /.home-owl-carousel -->
+                </section>
+                <!-- /.section -->
+                <!-- ============================================== Hot Sell PRODUCTS : END ============================================== -->
 
                 <!-- ============================================== New PRODUCTS ============================================== -->
                 <section class="section new-arriavls">
