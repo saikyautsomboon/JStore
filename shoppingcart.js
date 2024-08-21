@@ -212,8 +212,14 @@ $(document).ready(function() {
             var itemarray = JSON.parse(itemlist);
 
             itemarray.forEach(function(v, i) {
-                if (i == id) {
-                    v.qty--;
+                 if (i == id) {
+                    if (v.qty <= 1) {
+                        alert('Are you Show to Delete this item?');
+                        v.qty--;
+                        
+                    } else {
+                        v.qty--;
+                    }
                     if (v.qty == 0) {
                         itemarray.splice(id, 1);
                     }
