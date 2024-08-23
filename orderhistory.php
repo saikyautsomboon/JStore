@@ -31,6 +31,7 @@ $orders = $stmt->fetchAll();
                 $total = $order['total'];
                 $notes = $order['notes'];
                 $status = $order['status'];
+                $uid =$order['user_id'];
             ?>
                 <div class="shopping-cart col-lg-4 col-md-6 col-sm-12 col-12 p-4 ">
                     <div class="card" style="width: 18rem;">
@@ -40,16 +41,16 @@ $orders = $stmt->fetchAll();
                             <p class="card-text text-white">
                                 <?php if ($status == 'Orders') { ?>
                                     <button class="btn btn-warning">
-                                        <span class=""><?= $status; ?></span>
+                                        <a href="orderdetail.php?id=<?= $id ?>&user_id=<?= $uid ?> class=""><?= $status; ?></a>
                                     </button>
 
                                 <?php } elseif ($status == 'Confirm') { ?>
                                     <button class="btn btn-success">
-                                        <span class=""><?= $status; ?></span>
+                                        <a href="orderdetail.php?id=<?= $id ?>&user_id=<?= $uid ?> class=""><?= $status; ?></a>
                                     </button>
                                 <?php } else { ?>
                                     <button class="btn btn-danger">
-                                        <span class=""><?= $status; ?></span>
+                                        <a href="orderdetail.php?id=<?= $id ?>&user_id=<?= $uid ?> class=""><?= $status; ?></a>
                                     </button>
                                 <?php } ?>
                             </p>
